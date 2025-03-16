@@ -2,7 +2,11 @@
 
 이 저장소는 xv6 운영체제에서 구현한 세 가지 운영체제 프로젝트를 포함하고 있습니다.
 
-## P1: 다중 레벨 피드백 큐(MLFQ) 스케줄러 구현
+---
+- [요구사항 문서 (P1)](./docs/ELE3021_project01.pdf)
+- [결과 보고서 (P1)](./docs/ELE3021_project01_12999_2019082279.pdf)
+<details>
+<summary>P1: 다중 레벨 피드백 큐(MLFQ) 스케줄러 구현</summary>
 
 ### 개요
 이 프로젝트는 xv6 운영체제에서 다중 레벨 피드백 큐(MLFQ) 스케줄러를 구현합니다. MLFQ는 세 개의 큐 레벨로 구성됩니다:
@@ -69,7 +73,7 @@ typedef struct _MLFQ {
 - `mlfq_test.c`: 기본 MLFQ 기능 테스트
 - `a_test.c`: 스케줄러 잠금/해제에 대한 엣지 케이스를 포함한 특정 스케줄러 동작 테스트
 
-## P1: 다중 레벨 피드백 큐(MLFQ) 스케줄러 구현 - Troubleshooting
+## Troubleshooting
 
 ### 문제 1: 프로세스가 예상보다 오래 대기하는 문제
 **원인**: 프로세스가 L2 큐에서 너무 오래 대기하는 경우가 있음. L2 큐는 우선순위가 낮은 프로세스를 처리하지만, 우선순위가 낮다고 해서 항상 짧은 시간 내에 실행되지는 않음. 특히, L2에서의 우선순위 부스팅이 제대로 작동하지 않거나, 우선순위 감소가 너무 빨리 일어나는 경우 문제가 발생할 수 있음.
@@ -99,9 +103,13 @@ typedef struct _MLFQ {
 - 프로세스가 큐 간에 이동할 때마다 해당 프로세스의 상태를 명확하게 확인하고, `exit` 시스템 콜이 호출되는 조건을 엄격히 정의.
 - 프로세스 상태가 예기치 않게 변경되지 않도록 스케줄러 동작을 점검하고, `schedulerLock`과 `schedulerUnlock`이 올바르게 적용되었는지 확인.
 
---- 
+</details>
 
-## P2: Process Manager 및 LWP 구현
+---
+- [요구사항 문서 (P2)](./docs/ELE3021_Project02.pdf)
+- [결과 보고서 (P2)](./docs/ELE3021_project02_12999_20190802279.pdf)
+<details>
+<summary>P2: Process Manager 및 LWP 구현</summary>
 
 ### 개요
 이 프로젝트는 xv6 운영체제에서 프로세스 관리 기능을 확장하고, 확장된 스택 페이지를 지원하는 exec2 시스템 콜과 프로세스 메모리 한도를 설정하는 기능을 구현합니다. 또한 Light-weight Process(LWP)를 통해 스레드 기능을 지원합니다.
@@ -163,7 +171,7 @@ typedef struct _LWP {
 - `exec2_test.c`: `exec2`의 정상 작동 여부 확인
 - `lwp_test.c`: Light-weight Process 생성 및 종료 기능 테스트
 
-## P2: Process Manager 및 LWP 구현 - Troubleshooting
+## Troubleshooting
 
 ### 문제 1: 스레드 생성 및 관리 방식의 혼동
 **원인**: 스레드를 프로세스로 취급하기 위해 `proc` 구조체를 그대로 활용하는 설계에서, 스레드와 프로세스 간의 구분이 모호해져 관리가 어려운 상황이 발생할 수 있음. 또한, 스레드를 위한 멤버 변수를 `proc` 구조체에 추가하는 방식이 나중에 성능 저하를 초래할 가능성도 있음.
@@ -188,9 +196,13 @@ typedef struct _LWP {
 - `fork`와 `exec` 시스템 콜에서 스레드가 메인 프로세스와 적절히 메모리를 공유하면서 독립적으로 실행될 수 있도록 설계 변경.
 - 스레드가 독립적인 메모리 공간을 가질 수 있도록 적절히 `page directory`를 설정하고, 공유되는 부분과 독립적인 부분을 명확히 구분.
 
---- 
+</details>
 
-## P3: Multi Indirect, Symbolic Link, Buffered I/O 구현
+---
+- [요구사항 문서 (P3)](./docs/ELE3021_Project03.pdf)
+- [결과 보고서 (P3)](./docs/ELE3021_project03_12999_2019082279.pdf)
+<details>
+<summary>P3: Multi Indirect, Symbolic Link, Buffered I/O 구현</summary>
 
 ### 개요
 이 프로젝트는 xv6 운영체제의 파일 시스템을 확장하여, 더 큰 파일을 저장할 수 있는 Multi Indirect 주소 방식을 구현하고, Symbolic Link 기능을 추가하며, 성능 향상을 위한 Sync 기능을 구현합니다.
@@ -241,9 +253,7 @@ struct inode {
 - `ls` 명령어: 파일 목록 정상 출력 확인
 - Symbolic Link와 Multi Indirect 기능 테스트를 위한 특수 테스트 케이스
 
----
-
-## P3: Symbolic Link 구현 및 관련 Troubleshooting
+## Troubleshooting
 
 ### 문제 1: Multi-indirect block 처리에서의 혼동
 **원인**: `bmap` 함수에서 block number를 구할 때, multi-indirect block을 처리하는 부분에서 혼동이 생겨서 제대로 block 번호를 계산하지 못했음. 이로 인해 많은 시간이 걸림.
@@ -265,3 +275,5 @@ struct inode {
 **해결법**:
 - `OS 15 이론 pdf`에서 `copy = create + read + write`를 보고, `create` 함수를 사용해볼 수 있을 것 같아서 `create`를 활용하여 구현을 했음.
 - 그 후에 symbolic link의 구현을 좀 더 명확히 이해하고, 필요한 부분만 수정하여 완성할 수 있었음.
+
+</details>
