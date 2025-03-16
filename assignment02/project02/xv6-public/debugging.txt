@@ -1,0 +1,6 @@
+cprintf("ticks:%d  pid: %d, tid: %d , sz: %d, thdva: %d\n", ticks, curThd->pid, curThd->tid, curThd->sz, curThd->thdva);
+
+cprintf("ticks:%d  pid: %d, tid: %d , sz: %d, thdva: %d\n", ticks, p->pid, p->tid, p->sz, p->thdva);
+
+cprintf("ticks:%d  pid: %d, tid: %d , sz: %d, thdva: %d\n", ticks, thd->pid, thd->tid, thd->sz, thd->thdva);
+

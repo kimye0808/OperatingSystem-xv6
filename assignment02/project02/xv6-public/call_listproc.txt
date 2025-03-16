@@ -1,0 +1,13 @@
+#include "types.h"
+#include "defs.h"
+
+/********************************
+            project02
+list of RUNNING & RUNNABLE process
+*********************************/
+int
+sys_listProc(void)
+{
+  listProc();
+  return 0;
+}
