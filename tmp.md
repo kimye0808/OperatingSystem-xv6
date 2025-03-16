@@ -3,7 +3,8 @@
 이 저장소는 xv6 운영체제에서 구현한 세 가지 운영체제 프로젝트를 포함하고 있습니다.
 
 ---
-
+- [요구사항 문서 (P1)](./docs/ELE3021_project01.pdf)
+- [결과 보고서 (P1)](./docs/ELE3021_project01_12999_2019082279.pdf)
 <details>
 <summary>P1: 다중 레벨 피드백 큐(MLFQ) 스케줄러 구현</summary>
 
@@ -105,7 +106,8 @@ typedef struct _MLFQ {
 </details>
 
 ---
-
+- [요구사항 문서 (P2)](./docs/ELE3021_Project02.pdf)
+- [결과 보고서 (P2)](./docs/ELE3021_project02_12999_2019082279.pdf)
 <details>
 <summary>P2: Process Manager 및 LWP 구현</summary>
 
@@ -197,7 +199,8 @@ typedef struct _LWP {
 </details>
 
 ---
-
+- [요구사항 문서 (P3)](./docs/ELE3021_Project03.pdf)
+- [결과 보고서 (P3)](./docs/ELE3021_project03_12999_2019082279.pdf)
 <details>
 <summary>P3: Multi Indirect, Symbolic Link, Buffered I/O 구현</summary>
 
