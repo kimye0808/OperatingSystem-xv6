@@ -107,7 +107,7 @@ typedef struct _MLFQ {
 
 ---
 - [요구사항 문서 (P2)](./docs/ELE3021_Project02.pdf)
-- [결과 보고서 (P2)](./docs/ELE3021_project02_12999_2019082279.pdf)
+- [결과 보고서 (P2)](./docs/ELE3021_project02_12999_20190802279.pdf)
 <details>
 <summary>P2: Process Manager 및 LWP 구현</summary>
 
